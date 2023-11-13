@@ -1,4 +1,17 @@
 ---
+const pageTitle = "About Me"
+const bio = {
+    firstName: 'Amir',
+    lastName: 'Aiman',
+    occupation: 'Software Engineer',
+    hobbies: ['Ricing', 'Writing', 'Coding', 'Reading'],
+  }
+
+const skills = {
+    languages: ['HTML', 'CSS', 'JS', 'Typescript', 'PHP', 'Go', 'Python'],
+    frameworks: ['Express', 'Laravel', 'Codeigniter', 'React', 'jQuery'],
+    libraries: ['Jest'],
+  }
 
 ---
 
@@ -8,7 +21,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>LemonLime | About</title>
+		<title>LemonLime | {pageTitle}</title>
 	</head>
 	<body>
     <header>
@@ -26,12 +39,28 @@
         </ul>
       </nav>
     </header>
-		<h1>About Me</h1>
+		<h1>{pageTitle}</h1>
 
     <section>
       <h2>Who am I</h2>
       <p>
-        I'm a software engineer from Houston, Texas. My specialty is in full-stack
+        I'm a {bio.occupation} from Houston, Texas. My specialty is in full-stack
+        web development with a heavy emphasis on writing backend telecommunications
+        services & highly-interactive graphical web apps.
+      </p>
+    </section>
+    <section>
+      <h2>Skills</h2>
+      {
+        Object.keys(skills).map(key => {
+          const contentHead = <h3>{key.toUpperCase()}</h3>
+          const contentBody = skills[key].map(skill => <li>{skill}</li>)
+
+          return <section>{contentHead}<ul>{contentBody}</ul></section>
+        })
+      }
+      <p>
+        I'm a {bio.occupation} from Houston, Texas. My specialty is in full-stack
         web development with a heavy emphasis on writing backend telecommunications
         services & highly-interactive graphical web apps.
       </p>
