@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css'
+
 const pageTitle = "About Me"
 const bio = {
     firstName: 'Amir',
@@ -13,6 +15,12 @@ const skills = {
     libraries: ['Jest'],
   }
 
+const cssVars = {
+    skillColor: 'green',
+    fontWeight: 600,
+    textCase: 'uppercase'
+}
+
 ---
 
 <html lang="en">
@@ -22,6 +30,45 @@ const skills = {
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>LemonLime | {pageTitle}</title>
+    <style define:vars={cssVars}>
+      .skill-container {
+          margin-bottom: 1rem;
+          border: 1px solid #333;
+      }
+
+      .skill-container .skill-header, .skill-container .skills {
+          padding: 0.5rem 1rem;
+      }
+
+      .skill-container:last-child {
+          margin-bottom: 0;
+      }
+
+      .skill-header{
+          border-bottom: 1px solid #333;
+          margin: 0;
+      }
+
+      .skills {
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-wrap: wrap;
+          gap: 0.2rem;
+          margin: 0;
+          padding: 0 0 0 1rem;
+          list-style: none;
+      }
+
+      .skill {
+          color: #fff;
+          font-weight: var(--fontWeight);
+          text-transform: var(--textCase);
+          background-color: #444;
+          padding: 0.1rem 0.5rem;
+          border-radius: 9px;
+      }
+    </style>
 	</head>
 	<body>
     <header>
@@ -53,17 +100,17 @@ const skills = {
       <h2>Skills</h2>
       {
         Object.keys(skills).map(key => {
-          const contentHead = <h3>{key.toUpperCase()}</h3>
-          const contentBody = skills[key].map(skill => <li>{skill}</li>)
+          const contentHead = <h3 class="skill-header">{key.toUpperCase()}</h3>
+          const contentBody = skills[key].map(skill => <li class="skill">{skill}</li>)
 
-          return <section>{contentHead}<ul>{contentBody}</ul></section>
+          return (
+            <section class="skill-container">
+              {contentHead}
+              <ul class="skills">{contentBody}</ul>
+            </section>
+          )
         })
       }
-      <p>
-        I'm a {bio.occupation} from Houston, Texas. My specialty is in full-stack
-        web development with a heavy emphasis on writing backend telecommunications
-        services & highly-interactive graphical web apps.
-      </p>
     </section>
 	</body>
 </html>
