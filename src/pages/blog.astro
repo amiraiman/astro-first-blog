@@ -1,53 +1,19 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Blog Posts";
+const posts = await Astro.glob('../pages/posts/*.md');
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>LemonLime | {pageTitle}</title>
-    <script src="../scripts/navbar.js"></script>
-  </head>
-  <body>
-    <Navbar />
-
-    <h1>{pageTitle}</h1>
-
-    <section>
-      <h2>What's CS</h2>
-      <a href="/posts/post-1">
-        <p>
-          Most people assume that a degree in Computer Science is all about
-          programming and the foundations.....
-        </p>
-      </a>
-    </section>
-    <section>
-      <h2>TALL Stack</h2>
-      <a href="/posts/post-2">
-        <p>
-          If you've participated or seen what's happening in the PHP community,
-          chances are you've probably heard about the TALL Stack. It's made up
-          of.....
-        </p>
-      </a>
-    </section>
-    <section>
-      <h2>Learning Astro</h2>
-      <a href="/posts/post-3">
-        <p>
-          It wasn't always smooth sailing, but I'm enjoying building with Astro.
-        </p>
-      </a>
-    </section>
-
-    <Footer />
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+    <p>My humble writings</p>
+    {posts.map(post => (
+      <section>
+        <h2>{post.frontmatter.title}</h2>
+        <a href={post.url}>
+          <p>
+            {post.frontmatter.description}
+          </p>
+        </a>
+      </section>
+    ))}
+</BaseLayout>

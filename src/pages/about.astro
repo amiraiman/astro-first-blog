@@ -1,8 +1,5 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "About Me";
 const bio = {
   firstName: "Amir",
@@ -24,60 +21,48 @@ const cssVars = {
 };
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>LemonLime | {pageTitle}</title>
-    <style define:vars={cssVars}>
-      .skill-container {
-        margin-bottom: 1rem;
-        border: 1px solid #333;
-      }
+<style define:vars={cssVars}>
+  .skill-container {
+    margin-bottom: 1rem;
+    border: 1px solid #333;
+  }
 
-      .skill-container .skill-header,
-      .skill-container .skills {
-        padding: 0.5rem 1rem;
-      }
+  .skill-container .skill-header,
+  .skill-container .skills {
+    padding: 0.5rem 1rem;
+  }
 
-      .skill-container:last-child {
-        margin-bottom: 0;
-      }
+  .skill-container:last-child {
+    margin-bottom: 0;
+  }
 
-      .skill-header {
-        border-bottom: 1px solid #333;
-        margin: 0;
-      }
+  .skill-header {
+    border-bottom: 1px solid #333;
+    margin: 0;
+  }
 
-      .skills {
-        display: flex;
-        justify-content: start;
-        align-items: start;
-        flex-wrap: wrap;
-        gap: 0.2rem;
-        margin: 0;
-        padding: 0 0 0 1rem;
-        list-style: none;
-      }
+  .skills {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    list-style: none;
+  }
 
-      .skill {
-        color: #fff;
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-        background-color: #444;
-        padding: 0.1rem 0.5rem;
-        border-radius: 9px;
-      }
-    </style>
-    <script src="../scripts/navbar.js"></script>
-  </head>
-  <body>
-    <Navbar />
+  .skill {
+    color: #fff;
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+    background-color: #444;
+    padding: 0.1rem 0.5rem;
+    border-radius: 9px;
+  }
+</style>
 
-    <h1>{pageTitle}</h1>
-
+<BaseLayout pageTitle={pageTitle}>
     <section>
       <h2>Who am I</h2>
       <p>
@@ -104,7 +89,4 @@ const cssVars = {
         })
       }
     </section>
-
-    <Footer />
-  </body>
-</html>
+</BaseLayout>
