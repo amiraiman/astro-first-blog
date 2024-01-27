@@ -11,6 +11,11 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: start;
   line-height: 1.5;
 }
 
