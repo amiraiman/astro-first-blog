@@ -1,40 +1,28 @@
 ---
-import '../styles/global.css'
-const pageTitle = "Blog Posts"
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+const pageTitle = "Blog Posts";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>LemonLime | {pageTitle}</title>
-	</head>
-	<body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Homepage</a>
-          </li>
-          <li>
-            <a href="/about">About</a>
-          </li>
-          <li>
-            <a href="/blog">Blog</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-		<h1>{pageTitle}</h1>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>LemonLime | {pageTitle}</title>
+  </head>
+  <body>
+    <Navigation />
+
+    <h1>{pageTitle}</h1>
 
     <section>
       <h2>What's CS</h2>
       <a href="/posts/post-1">
         <p>
-          Most people assume that a degree in Computer Science is all about programming
-          and the foundations.....
+          Most people assume that a degree in Computer Science is all about
+          programming and the foundations.....
         </p>
       </a>
     </section>
@@ -42,8 +30,9 @@ const pageTitle = "Blog Posts"
       <h2>TALL Stack</h2>
       <a href="/posts/post-2">
         <p>
-          If you've participated or seen what's happening in the PHP community, chances
-          are you've probably heard about the TALL Stack. It's made up of.....
+          If you've participated or seen what's happening in the PHP community,
+          chances are you've probably heard about the TALL Stack. It's made up
+          of.....
         </p>
       </a>
     </section>
@@ -55,5 +44,5 @@ const pageTitle = "Blog Posts"
         </p>
       </a>
     </section>
-	</body>
+  </body>
 </html>

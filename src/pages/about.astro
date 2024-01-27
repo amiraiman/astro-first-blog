@@ -1,92 +1,80 @@
 ---
-import '../styles/global.css'
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
 
-const pageTitle = "About Me"
+const pageTitle = "About Me";
 const bio = {
-    firstName: 'Amir',
-    lastName: 'Aiman',
-    occupation: 'Software Engineer',
-    hobbies: ['Ricing', 'Writing', 'Coding', 'Reading'],
-  }
+  firstName: "Amir",
+  lastName: "Aiman",
+  occupation: "Software Engineer",
+  hobbies: ["Ricing", "Writing", "Coding", "Reading"],
+};
 
 const skills = {
-    languages: ['HTML', 'CSS', 'JS', 'Typescript', 'PHP', 'Go', 'Python'],
-    frameworks: ['Express', 'Laravel', 'Codeigniter', 'React', 'jQuery'],
-    libraries: ['Jest'],
-  }
+  languages: ["HTML", "CSS", "JS", "Typescript", "PHP", "Go", "Python"],
+  frameworks: ["Express", "Laravel", "Codeigniter", "React", "jQuery"],
+  libraries: ["Jest"],
+};
 
 const cssVars = {
-    skillColor: 'green',
-    fontWeight: 600,
-    textCase: 'uppercase'
-}
-
+  skillColor: "green",
+  fontWeight: 600,
+  textCase: "uppercase",
+};
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>LemonLime | {pageTitle}</title>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>LemonLime | {pageTitle}</title>
     <style define:vars={cssVars}>
       .skill-container {
-          margin-bottom: 1rem;
-          border: 1px solid #333;
+        margin-bottom: 1rem;
+        border: 1px solid #333;
       }
 
-      .skill-container .skill-header, .skill-container .skills {
-          padding: 0.5rem 1rem;
+      .skill-container .skill-header,
+      .skill-container .skills {
+        padding: 0.5rem 1rem;
       }
 
       .skill-container:last-child {
-          margin-bottom: 0;
+        margin-bottom: 0;
       }
 
-      .skill-header{
-          border-bottom: 1px solid #333;
-          margin: 0;
+      .skill-header {
+        border-bottom: 1px solid #333;
+        margin: 0;
       }
 
       .skills {
-          display: flex;
-          justify-content: start;
-          align-items: start;
-          flex-wrap: wrap;
-          gap: 0.2rem;
-          margin: 0;
-          padding: 0 0 0 1rem;
-          list-style: none;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-wrap: wrap;
+        gap: 0.2rem;
+        margin: 0;
+        padding: 0 0 0 1rem;
+        list-style: none;
       }
 
       .skill {
-          color: #fff;
-          font-weight: var(--fontWeight);
-          text-transform: var(--textCase);
-          background-color: #444;
-          padding: 0.1rem 0.5rem;
-          border-radius: 9px;
+        color: #fff;
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+        background-color: #444;
+        padding: 0.1rem 0.5rem;
+        border-radius: 9px;
       }
     </style>
-	</head>
-	<body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Homepage</a>
-          </li>
-          <li>
-            <a href="/about">About</a>
-          </li>
-          <li>
-            <a href="/blog">Blog</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-		<h1>{pageTitle}</h1>
+  </head>
+  <body>
+    <Navigation />
+
+    <h1>{pageTitle}</h1>
 
     <section>
       <h2>Who am I</h2>
@@ -99,18 +87,20 @@ const cssVars = {
     <section>
       <h2>Skills</h2>
       {
-        Object.keys(skills).map(key => {
-          const contentHead = <h3 class="skill-header">{key.toUpperCase()}</h3>
-          const contentBody = skills[key].map(skill => <li class="skill">{skill}</li>)
+        Object.keys(skills).map((key) => {
+          const contentHead = <h3 class="skill-header">{key.toUpperCase()}</h3>;
+          const contentBody = skills[key].map((skill) => (
+            <li class="skill">{skill}</li>
+          ));
 
           return (
             <section class="skill-container">
               {contentHead}
               <ul class="skills">{contentBody}</ul>
             </section>
-          )
+          );
         })
       }
     </section>
-	</body>
+  </body>
 </html>
