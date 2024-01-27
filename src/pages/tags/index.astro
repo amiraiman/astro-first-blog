@@ -1,0 +1,24 @@
+---
+  import BaseLayout from '../../layouts/BaseLayout.astro';
+  const posts = await Astro.glob("../posts/*.md")
+  const tagsWithFreq = []
+  posts.forEach(post => {
+    post.frontmatter.tags?.forEach(tag => {
+      if (!tagsWithFreq[tag]) {
+        tagsWithFreq[tag] = 1
+        return
+      }
+
+      tagsWithFreq[tag] += 1
+    })
+  })
+---
+
+<BaseLayout pageTitle="All Tags">
+  <p>Tag Lists:</p>
+    {Object.keys(tagsWithFreq).map(tag => (
+      <p>
+        <a href={`/tags/${tag}`}>{tag} - {tagsWithFreq[tag]} posts</a>
+      </p>
+    ))}
+</BaseLayout>
