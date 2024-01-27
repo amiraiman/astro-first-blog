@@ -25,6 +25,20 @@ const {frontmatter} = Astro.props;
     gap: 0.5rem;
     padding-bottom: 1rem;
   }
+
+  .tags-container {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 1rem;
+  }
+
+  .tags {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 0.5rem;
+  }
 </style>
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -38,6 +52,13 @@ const {frontmatter} = Astro.props;
     <div class="meta">
       <p>Published At: {frontmatter.pubDate.slice(0, 10)}</p>
       <p>Written By: {frontmatter.author}</p>
+    </div>
+
+    <div class="tags-container">
+      <p>Tags: </p>
+      <div class="tags">
+      {frontmatter.tags.map(tag => <p class="tag">{tag}</p>)}
+      </div>
     </div>
   </div>
 
