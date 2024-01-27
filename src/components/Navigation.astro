@@ -1,15 +1,87 @@
-<header>
-  <nav>
-    <ul>
-      <li>
-        <a href="/">Homepage</a>
-      </li>
-      <li>
-        <a href="/about">About</a>
-      </li>
-      <li>
-        <a href="/blog">Blog</a>
-      </li>
+---
+const links = [
+  {
+    name: "About",
+    href: "/about",
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+  },
+];
+---
+
+<style>
+  .header {
+    background-color: #606c38;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 6rem;
+    padding: 1rem 2rem;
+  }
+
+  .brand {
+    font-size: 2.4rem;
+  }
+
+  .brand-link:link,
+  .brand-link:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .brand-link:hover,
+  .brand-link:active {
+    cursor: pointer;
+  }
+
+  .navigations-container {
+    margin-left: auto;
+  }
+
+  .navigations {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .navigation {
+    font-size: 1.6rem;
+  }
+
+  .navigation-link:link,
+  .navigation-link:visited {
+    color: #cef8ff;
+    text-decoration: none;
+    transition: all 0.15s ease-in;
+    border-bottom: 1px solid transparent;
+  }
+
+  .navigation-link:hover,
+  .navigation-link:active {
+    opacity: 0.9;
+    border-bottom: 1px solid currentColor;
+  }
+</style>
+
+<header class="header">
+  <div class="brand">
+    <a class="brand-link" href="/">LemonLime</a>
+  </div>
+  <nav class="navigations-container">
+    <ul class="navigations">
+      {
+        links.map((link) => (
+          <li class="navigation">
+            <a class="navigation-link" href={link.href}>
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
