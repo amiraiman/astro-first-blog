@@ -12,37 +12,9 @@ const links = [
 ---
 
 <style>
-  .header {
-    background-color: #606c38;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 6rem;
-    padding: 1rem 2rem;
-  }
-
-  .brand {
-    font-size: 2.4rem;
-  }
-
-  .brand-link:link,
-  .brand-link:visited {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .brand-link:hover,
-  .brand-link:active {
-    cursor: pointer;
-  }
-
-  .navigations-container {
-    margin-left: auto;
-  }
-
   .navigations {
     list-style: none;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -65,23 +37,26 @@ const links = [
     opacity: 0.9;
     border-bottom: 1px solid currentColor;
   }
+
+  .expanded {
+    display: unset;
+  }
+
+  @media screen and (min-width: 636px) {
+    .navigations {
+      display: flex;
+    }
+  }
 </style>
 
-<header class="header">
-  <div class="brand">
-    <a class="brand-link" href="/">LemonLime</a>
-  </div>
-  <nav class="navigations-container">
-    <ul class="navigations">
-      {
-        links.map((link) => (
-          <li class="navigation">
-            <a class="navigation-link" href={link.href}>
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-</header>
+<ul class="navigations">
+  {
+    links.map((link) => (
+      <li class="navigation">
+        <a class="navigation-link" href={link.href}>
+          {link.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>

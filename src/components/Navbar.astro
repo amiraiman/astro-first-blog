@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import Navigation from "./Navigation.astro";
+---
+
+<style>
+  .navbar {
+    background-color: #606c38;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 6rem;
+    padding: 1rem 2rem;
+  }
+
+  .brand {
+    font-size: 2.4rem;
+  }
+
+  .brand-link:link,
+  .brand-link:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .brand-link:hover,
+  .brand-link:active {
+    cursor: pointer;
+  }
+
+  .navigations-container {
+    margin-left: auto;
+  }
+</style>
+
+<header class="navbar">
+  <div class="brand">
+    <a class="brand-link" href="/">LemonLime</a>
+  </div>
+
+  <nav class="navigations-container">
+    <Navigation />
+  </nav>
+</header>
