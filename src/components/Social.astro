@@ -1,0 +1,15 @@
+---
+const { link, platform } = Astro.props;
+---
+
+<style>
+  a {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-radius: 1rem;
+    background-color: #606c38;
+    text-decoration: none;
+  }
+</style>
+
+<a target="_blank" href={link}>{platform}</a>

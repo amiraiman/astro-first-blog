@@ -1,0 +1,37 @@
+---
+import Social from "./Social.astro";
+
+const contents = [
+  {
+    description: "See my other projects on",
+    link: "https://www.github.com/amiraiman",
+    platform: "Github",
+  },
+  {
+    description: "See my portfolio & print-friendly cv at my",
+    link: "https://www.amiraiman.dev",
+    platform: "Website",
+  },
+];
+---
+
+<style>
+  footer {
+    display: flex;
+    gap: 2rem;
+    justify-content: start;
+    align-items: center;
+    padding: 4rem;
+  }
+</style>
+
+<footer>
+  {
+    contents.map((content) => (
+      <p>
+        {content.description}{" "}
+        {<Social link={content.link} platform={content.platform} />}
+      </p>
+    ))
+  }
+</footer>
