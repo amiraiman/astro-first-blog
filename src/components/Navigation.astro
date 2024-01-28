@@ -3,14 +3,17 @@ const links = [
   {
     name: "About",
     href: "/about",
+    reload: true,
   },
   {
     name: "Blog",
     href: "/blog",
+    reload: false,
   },
   {
     name: "Tags",
     href: "/tags",
+    reload: false,
   },
 ];
 ---
@@ -53,11 +56,11 @@ const links = [
   }
 </style>
 
-<ul class="navigations">
+<ul transition:animate="slide" class="navigations">
   {
     links.map((link) => (
       <li class="navigation">
-        <a class="navigation-link" href={link.href}>
+        <a class="navigation-link" href={link.href} data-astro-reload={link.reload}>
           {link.name}
         </a>
       </li>

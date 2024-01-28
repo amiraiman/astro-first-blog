@@ -51,7 +51,9 @@ const {frontmatter} = Astro.props;
 
     <div class="meta">
       <p>Published At: {frontmatter.pubDate.slice(0, 10)}</p>
-      <p>Written By: {frontmatter.author}</p>
+      <a href="/about">
+        <p>Written By: {frontmatter.author}</p>
+      </a>
     </div>
 
     <div class="tags-container">
