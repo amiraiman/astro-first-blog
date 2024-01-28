@@ -46,3 +46,12 @@ h6 {
 p {
   font-size: 1.6rem;
 }
+
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .navigation-link {
+  color: #fff;
+}

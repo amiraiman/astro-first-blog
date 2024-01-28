@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Navigation from "./Navigation.astro";
 import Hamburger from './Hamburger.astro';
+import ThemeToggler from './ThemeToggler.astro';
 ---
 
 <style>
@@ -28,8 +29,15 @@ import Hamburger from './Hamburger.astro';
     cursor: pointer;
   }
 
-  .navigations-container {
+  .actions-container {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  .navigations-container {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -43,8 +51,11 @@ import Hamburger from './Hamburger.astro';
     <a class="brand-link" href="/">LemonLime</a>
   </div>
 
-  <nav class="navigations-container">
-    <Hamburger />
-    <Navigation />
-  </nav>
+  <div class="actions-container">
+    <ThemeToggler />
+    <nav class="navigations-container">
+      <Hamburger />
+      <Navigation />
+    </nav>
+  </div>
 </header>
